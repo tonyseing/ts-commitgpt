@@ -2,12 +2,12 @@
 
 Automatically generate commit messages using ChatGPT.
 
-![commitgpt](https://user-images.githubusercontent.com/3975738/205517867-1e7533ae-a8e7-4c0d-afb6-d259635f3f9d.gif)
+![ts-commitgpt](https://user-images.githubusercontent.com/3975738/205517867-1e7533ae-a8e7-4c0d-afb6-d259635f3f9d.gif)
 
 ## How to use?
 
 ```bash
-npx commitgpt
+npx ts-commitgpt
 ```
 
 ### Get OpenAI api key
@@ -20,7 +20,7 @@ you can create `.commitgpt.json` and/or `.commitgpt-template` config files in yo
 default: 
 ```json
 {
-  "model": "text-davinci-003",
+  "model": "gpt-4o",
   "temperature": 0.5,
   "maxTokens": 2048,
 }
@@ -52,6 +52,7 @@ this file can be used to change the template used to generate the prompt request
 
 ## Credits
 
+This is a fork of https://github.com/tonyseing/commitgpt
 Some code and approaches were inspired by the awesome projects below:
 
 - https://github.com/acheong08/ChatGPT

@@ -14,13 +14,28 @@ export class ChatGPTClient {
     const { model, maxTokens, temperature } = await getPromptOptions();
 
     try {
-      const result = await openai.createCompletion({
+      const result = await openai.createChatCompletion({
         model,
-        prompt: question,
+        messages: [
+          {
+            role: "system",
+            content:
+              "You are a helpful software development assignment that writes git commit messages.",
+          },
+          {
+            role: "user",
+            content: question,
+          },
+        ],
         max_tokens: maxTokens,
         temperature,
       });
-      return result.data.choices[0].text;
+
+      if (!result.data.choices) {
+        throw new Error("No choices in response");
+      }
+
+      return result.data.choices[0].message.content;
     } catch (e) {
       console.error(e?.response ?? e);
       throw e;
